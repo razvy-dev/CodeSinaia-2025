@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 
 # Read input parameters from the console
 count = 100 # int(input("Number of values?> "))
-min_value = 15 # int(input("Minimum value?> "))
-max_value = 65 # int(input("Maximum value?> "))
+min_value = 100 # int(input("Minimum value?> "))
+max_value = 150 # int(input("Maximum value?> "))
 print(f"Generating {count} randoms in the range [{min_value}, {max_value}]")
 
 # Generate count values in the range [min_value, max_value] and store them in a the values map
@@ -21,7 +21,7 @@ for i in range(0, count):
     randoms_map[r].append(i)
 
 # Write a text file "randoms_db.txt" with each random on a line, its value followed by the indexes where it occurred
-with open("IntroToPy/randoms_db.txt", "w") as data_file:
+with open("IntroToPy/randoms_improved_db.txt", "w") as data_file:
     for r in randoms_map.keys():
         data_file.write(f"{r} {randoms_map[r]}\n")
 
