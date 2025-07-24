@@ -1,0 +1,34 @@
+[
+  {
+    "sender": "You",
+    "text": "color"
+  },
+  {
+    "sender": "Bot",
+    "text": "My favorite color is blue 💙"
+  },
+  {
+    "sender": "You",
+    "text": "eat"
+  },
+  {
+    "sender": "Bot",
+    "text": "I run on code, not food!"
+  },
+  {
+    "sender": "You",
+    "text": "hi"
+  },
+  {
+    "sender": "Bot",
+    "text": "Hello! 😊"
+  },
+  {
+    "sender": "You",
+    "text": "you"
+  },
+  {
+    "sender": "Bot",
+    "text": "I'm doing fine, and you?"
+  }
+]

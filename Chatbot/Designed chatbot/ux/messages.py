@@ -7,7 +7,7 @@ def send_message(entry, chat_log):
         empty_message_alert()
         return
 
-    user_message = None
+    user_message = entry.get()
     
     #TODO: get entry's text in the user_message variable using the get method4
     
@@ -20,7 +20,8 @@ def send_message(entry, chat_log):
     
     bot_response = None
     #TODO: get response for the user message as the bot_response using the get_response function from chatbot.probability
-    
+
+    bot_response = get_response(user_message)    
     
     chat_log.insert(tk.END, f"Bot: {bot_response}\n\n")
     
@@ -35,3 +36,4 @@ def clear_chat(chat_log):
     
     #TODO: alert for succesful clear
     
+    tk.messagebox.showwarning("Chat Cleared", "Chat history has been cleared successfully.")

@@ -1,5 +1,6 @@
 import re
-from responses import get_custom_response, unknown
+from responses import get_custom_response, unknown, get_fav_color
+import random
 RULES = [
     {
         "keywords": ["hello", "hi", "hey", "salut"],
@@ -20,6 +21,11 @@ RULES = [
         "keywords": ["i", "love", "code", "palace"],
         "required": ["code"],
         "response": "Thank you! ❤️"
+    },
+    {
+        "keywords": ["favorite", "color", "colour"],
+        "required": ["color"],
+        "response": "I love colors in general! 🌈",
     },
     {
         "keywords": ["what", "you", "eat", "like"],
@@ -58,9 +64,20 @@ def message_probability(user_message, keywords, single_response=False, required=
     #TODO: Calculează probabilitatea mesajului message_certainty
     #pt fiecare cuvant din mesaj care apare in recognised_words
     #message_certainty este incrementat
+
+    message_certainty = 0
+
+    for word in user_message:
+        if word in keywords:
+            message_certainty += 1
     
     #TODO: Calculează match_ratio ca raportul dintre message_certainty și numărul de cuvinte din keywords
     #dacă keywords este gol, setăm match_ratio la 0
+
+    if len(keywords) == 0:
+        match_ratio = 0
+    else:
+        match_ratio = message_certainty / len(keywords)
     
     
     if required:
@@ -76,25 +93,43 @@ def check_all_messages(message):
     best_response = None
 
     for rule in RULES:
-        None
         
-        #TODO: Calculează probabilitatea mesajului pentru fiecare regulă
-        #folosind funcția message_probability definită mai sus
+        probability = message_probability(
+            user_message=message,
+            keywords=rule["keywords"],
+            single_response=rule.get("single_response", False),
+            required=rule.get("required", [])
+        )
         
-        #TODO: dacă prob este mai mare decât highest_prob,
-        # actualizează best_response și highest_prob
+        if probability > highest_prob:
+            highest_prob = probability
+            if "eat" in rule.get("required", []):
+                best_response = get_custom_response("eat")
+            elif "color" in rule.get("required", []):
+                best_response = get_fav_color(random.choice(["yellow", "blue", "green"]))
+            else:
+                best_response = rule["response"]
         
         
     #TODO: returneaza raspunsul, fie cel de eroare, fie cel gasit 
+
+    return best_response if best_response else unknown()
     
 
 def get_response(user_input):
-    None
+    # None
     #TODO: Verifică dacă user_input este gol sau conține doar spații
 
+    if not user_input.strip():
+        return "Please enter a message."
+
     #TODO: apeleaza functia split pentru a împărți mesajul în cuvinte 
+
+    user_message = re.split(r'\s+|[,;?.-]\s*', user_input.lower())
     
     # apoi returneaza rezultatul obtinut folosind check_all_messages pentru a verifica mesajul
+
+    return check_all_messages(user_message)
 
 # Ce inseamna \s+|[,;?.-]\s*?
 # \s+ înseamnă unul sau mai multe spații albe (inclusiv tab-uri și linii noi)

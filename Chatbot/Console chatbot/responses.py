@@ -7,6 +7,14 @@ def get_custom_response(topic):
         return random.choice(R_Eating)
     return "Hmm... I don't know how to respond to that."
 
+def get_fav_color(color):
+    if (color == "yellow"):
+        return "Yellow is bright and cheerful! 💛"
+    elif (color == "blue"):
+        return "Blue is calm and serene! 💙"
+    elif (color == "green"):
+        return "Green is fresh and vibrant! 💚 "
+
 def unknown():
     responses = [
         "Could you please rephrase that?",

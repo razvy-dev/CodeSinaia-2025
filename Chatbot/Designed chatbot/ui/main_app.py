@@ -30,11 +30,12 @@ def open_app():
     
     #TODO: de ce dă eroare? REZOLVĂ
     # upper left image logo
-    try:
-        root.iconbitmap("code_sinaia_logo.ico")  # Ensure you have a code_sinaia_logo.ico file in the assets directory
-    except tk.TclError:
-        messagebox.showerror("Error", "Icon file not found. Please ensure 'code_sinaia_logo.ico' is in the assets directory.")
-        return
+    print(ASSETS_PATH)
+    # try:
+    #     root.iconphoto(f"{relative_to_assets("code_sinaia_logo.png")}")  # Ensure you have a code_sinaia_logo.ico file in the assets directory
+    # except tk.TclError:
+    #     messagebox.showerror(f"Error", "Icon file not found. Please ensure 'code_sinaia_logo.ico' is in the assets directory. Error: {e}")
+    #     return
     
     
     window_width = 800
@@ -42,7 +43,7 @@ def open_app():
     
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
-    display_x = (screen_width // 2) - (window_width // 2)
+    display_x = (window_width // 2) - (screen_width // 2)
     display_y = (screen_height // 2) - (window_height // 2)
     root.geometry(f"{window_width}x{window_height}+{display_x}+{display_y}")
     root.title("Code Sinaia 2025 - Chatbot App")
@@ -58,7 +59,144 @@ def open_app():
         save_chat(chat_log)
         
     #TODO: insert the code here
-    
+
+
+    canvas = Canvas(
+        root,
+        bg = "#D9D9D9",
+        height = 600,
+        width = 800,
+        bd = 0,
+        highlightthickness = 0,
+        relief = "ridge"
+    )
+
+    canvas.place(x = 0, y = 0)
+    canvas.create_rectangle(
+        30.0,
+        465.0,
+        770.0,
+        505.0,
+        fill="#C4C4C4",
+        outline="")
+
+    canvas.create_rectangle(
+        30.0,
+        72.0,
+        770.0,
+        429.0,
+        fill="#C4C4C4",
+        outline=""
+    )
+
+    button_1 = Button(
+        text="Send",
+        bg="#C5C5C5",
+        borderwidth=0,
+        highlightthickness=0,
+        command=on_send,
+        relief="flat"
+    )
+    button_1.place(
+        x=30.0,
+        y=517.0,
+        width=130.0,
+        height=40.0
+    )
+
+    button_2 = Button(
+        text="Save",
+        bg="#C5C5C5",
+        borderwidth=0,
+        highlightthickness=0,
+        command=on_save,
+        relief="flat"
+    )
+    button_2.place(
+        x=233.0,
+        y=517.0,
+        width=130.0,
+        height=40.0
+    )
+
+    button_3 = Button(
+        text="Load",
+        bg="#C5C5C5",
+        borderwidth=0,
+        highlightthickness=0,
+        command=on_load,
+        relief="flat"
+    )
+    button_3.place(
+        x=436.0,
+        y=517.0,
+        width=130.0,
+        height=40.0
+    )
+    button_4 = Button(
+        text="Clear",
+        bg="#C5C5C5",
+        borderwidth=0,
+        highlightthickness=0,
+        command=on_clear,
+        relief="flat"
+    )
+    button_4.place(
+        x=639.0,
+        y=516.0,
+        width=130.0,
+        height=40.0
+    )
+
+    canvas.create_text(
+        260.0,
+        16.999999999999993,
+        anchor="nw",
+        text="MY CHATBOT APP",
+        fill="#000000",
+        font=("Inter", 32 * -1)
+    )
+
+    button_5 = Button(
+        text="Github",
+        bg="#C5C5C5",
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_5 clicked"),
+        relief="flat"
+    )
+    button_5.place(
+        x=709.0,
+        y=575.0,
+        width=61.0,
+        height=20.0
+    )
+
+    canvas.create_rectangle(
+        -4.0,
+        562.0,
+        800.0,
+        566.0,
+        fill="#C4C4C4",
+        outline="")
+
+    canvas.create_text(
+        323.0,
+        575.0,
+        anchor="nw",
+        text="™CodeSinaia 2025",
+        fill="#000000",
+        font=("Inter", 14 * -1)
+    )
+
+    canvas.create_text(
+        30.0,
+        575.0,
+        anchor="nw",
+        text="©2025 Inproted",
+        fill="#000000",
+        font=("Inter", 14 * -1)
+    )
     
     # Chat log (Text widget)
     chat_log = Text(root, bg="#C5C5C5", bd=0, state=tk.DISABLED, wrap="word")

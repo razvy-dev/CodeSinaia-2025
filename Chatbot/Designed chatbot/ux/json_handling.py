@@ -17,9 +17,11 @@ def load_chat(chat_log):
 
         for msg in messages:
             #TODO: remind what means string interpolation and use it here
-            chat_log.insert(tk.END, "{msg['text']}: {msg['sender']}\n")
+            chat_log.insert(tk.END, f"{msg['text']}: {msg['sender']}\n")
 
         chat_log.config(state=tk.DISABLED)
+
+        messagebox.showinfo("Success", "Chat history loaded successfully.")
         
     except json.JSONDecodeError:
         json_decode_error_alert()
@@ -36,3 +38,5 @@ def save_chat(chat_log):
     with open("data/history.json", "w", encoding="utf-8") as f:
         json.dump(messages, f, indent=2, ensure_ascii=False)
     save_success_alert()
+
+    messagebox.showinfo("Success", "Chat history saved successfully.")
