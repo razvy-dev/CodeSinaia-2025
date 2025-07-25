@@ -34,7 +34,7 @@ def open_app():
     # try:
     #     root.iconphoto(f"{relative_to_assets("code_sinaia_logo.png")}")  # Ensure you have a code_sinaia_logo.ico file in the assets directory
     # except tk.TclError:
-    #     messagebox.showerror(f"Error", "Icon file not found. Please ensure 'code_sinaia_logo.ico' is in the assets directory. Error: {e}")
+    #     messagebox.showerror(f"Error", "Icon file not found. Please ensure 'code_sinaia_logo.ico' is in the assets directory.")
     #     return
     
     

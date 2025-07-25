@@ -17,7 +17,7 @@ def load_chat(chat_log):
 
         for msg in messages:
             #TODO: remind what means string interpolation and use it here
-            chat_log.insert(tk.END, f"{msg['text']}: {msg['sender']}\n")
+            chat_log.insert(tk.END, f"{msg["sender"]}: {msg["text"]}\n")
 
         chat_log.config(state=tk.DISABLED)
 

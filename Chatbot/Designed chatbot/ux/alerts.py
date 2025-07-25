@@ -54,6 +54,8 @@ def load_success_alert():
     ok_button.pack(pady=10)
     
     #TODO: center window
+
+    center_window(alert)
     
 
 #TODO: Create alert window for success clear
@@ -61,6 +63,9 @@ def clear_success_alert():
     alert = tk.Toplevel()
     
     #TODO: create alert and center it
+    center_window(alert)
+    alert.title("Success")
+    alert.configure(bg="#d4edda")
     
     alert_label = tk.Label(alert, text="Chat cleared successfully.", bg="#d4edda", fg="#155724", font=("Helvetica", 12))
     alert_label.pack(expand=True)
@@ -70,6 +75,9 @@ def no_history_alert():
     alert = tk.Toplevel()
     
     #TODO: create alert and center it
+    center_window(alert)
+    alert.title("Alert")
+    alert.configure(bg="#f8d7da")
     
     alert_label = tk.Label(alert, text="No chat history found.", bg="#f8d7da", fg="#ff0019", font=("Helvetica", 12))
     alert_label.pack(expand=True)

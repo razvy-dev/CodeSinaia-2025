@@ -13,6 +13,10 @@ def send_message(entry, chat_log):
     
     
     #TODO: if user_message is blank, empty_message_alert
+
+    if user_message.strip() == "":
+        empty_message_alert()
+        return
     
 
     chat_log.config(state=tk.NORMAL)
